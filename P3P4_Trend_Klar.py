@@ -39,8 +39,6 @@ df_1 = df_1.to_frame()
 df_1['Count_Cases'] = df_Case_1['Count_Cases']
 df_1['Target'] = df_Target_1['Target']
 
-#df_1['Target'] = ['0']
-
 df_2 = df_Date_1['Date']
 df_2 = df_2.to_frame()
 df_2['Count_Cases'] = df_Case_2['Count_Cases']
