@@ -22,7 +22,7 @@ file_name = r"D:\1.P3P4\Heatmap_Neu.xlsx"
 df = pd.read_excel(file_name, sheet_name = 'Sheet1')
 
 df['Date']=df['Date'].dt.date
-df = df.iloc[-97:]
+df = df.iloc[-100:] #Select last 100 stats
 
 data = df.pivot("Region", "Date", "Count_Cases")
 data = data.fillna(0)
