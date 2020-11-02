@@ -11,7 +11,6 @@ import pysftp
 cnopts = pysftp.CnOpts()
 cnopts.hostkeys = None    # disable host key checking.
 
-
 sftp = pysftp.Connection(host='11.111.111.111', username='FTP', password='ABCD', cnopts=cnopts)
 sftp.cwd('/export/home/omc/var/fileint/TSNBI/UMTS_PCHR/20200609/MSRNCH05')
 #regex = re.compile(r'([A-Z]{1}\d{4})',re.IGNORECASE)
