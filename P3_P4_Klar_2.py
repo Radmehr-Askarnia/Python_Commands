@@ -7,15 +7,14 @@ Created on Tue Jul 14 18:18:49 2020
 
 import pandas as pd
 from datetime import datetime, timedelta
-import seaborn as sns
-import numpy as np
+#import seaborn as sns
+#import numpy as np
 
 
 xlsx1 = pd.ExcelFile(r"D:\1.P3P4\Files\Heute\1.xlsx")
 xlsx2 = pd.ExcelFile(r"D:\1.P3P4\Files\Heute\2.xlsx")
 xlsx3 = pd.ExcelFile(r"D:\1.P3P4\Files\Heute\2.xlsx")
 xlsxr = pd.ExcelFile(r"D:\1.P3P4\Trendstatistiken.xlsx")
-#xlsxk = pd.ExcelFile(r"D:\1.P3P4\AP3P4_das_Resultat.xlsx") #Read File for Draw Trend
 xlsxHN = pd.ExcelFile(r"D:\1.P3P4\Heatmap_Neu.xlsx")
 
 df1 = xlsx1.parse('Sites Level 4G')
@@ -79,13 +78,13 @@ dff.Province[dff.Province== 'HAHARMAHAL_BAKHTYARI'] = 'Chahar Mahall and Bakhtia
 dff.columns = ['B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R', 'S'] #Name:'A' not used
 
 
-cond1 = dff.M < 99.2
-cond2 = dff.N < 99.2
-cond3 = dff.O < 99.2
-cond4 = dff.P < 99.2
-cond5 = dff.Q < 99.2
-cond6 = dff.R < 99.2
-cond7 = dff.S < 99.2
+cond1 = dff.M < 99.4  #Set Threshold
+cond2 = dff.N < 99.4
+cond3 = dff.O < 99.4
+cond4 = dff.P < 99.4
+cond5 = dff.Q < 99.4
+cond6 = dff.R < 99.4
+cond7 = dff.S < 99.4
 
 temp1 = pd.concat([cond4,cond5,cond6,cond7],axis=1)
 dff['Count_Days_4'] = temp1.sum(axis=1)
@@ -117,7 +116,6 @@ df4.groupby(['PHYSICAL_SITE','SITE_ID']).first()
 #df4.first()
 
 
-
 Zeit_Trend = datetime.strftime(datetime.now()- timedelta(1), '%Y-%m-%d')
 Zahl_Trend = df4['PHYSICAL_SITE'].nunique()
 Null_Trend = '0'
@@ -137,13 +135,6 @@ df82 = df8['index']
 
 dfr8 = pd.DataFrame({'Date': df80 ,'Count_Cases': df81, 'Region': df82})
 Bigdata2 = dfHN.append(dfr8, ignore_index=False)
-
-#Draw Trend
-"""
-sns.set(style="whitegrid")
-data = pd.DataFrame(values, dates, columns=["A", "B", "C"])
-sns.lineplot(data=data, palette="tab10", linewidth=2.5)
-"""
 
 
 df7.columns = ['Physical_Site', 'SITE_ID','NE','Site_Priority','TECH','Region','Province','City','Vendor','Zone_Priority','FLM NAME', Sieben_Tage_Zuvor, Sechs_Tage_Zuvor, Funf_Tage_Zuvor, Vier_Tage_Zuvor,Drei_Tage_Zuvor, Zwei_Tage_Zuvor, Einen_Tag_Zuvor]
