@@ -1,0 +1,32 @@
+from ftplib import FTP
+from io import BytesIO
+import pandas as pd
+
+# Example DataFrame
+df = pd.DataFrame({
+    "Date": ["2024-11-01", "2024-11-02"],
+    "Value": [100, 150]
+})
+
+# Convert DF to CSV in memory
+csv_buffer = BytesIO()
+df.to_csv(csv_buffer, index=False)
+csv_buffer.seek(0)
+
+# FTP connection info
+FTP_HOST = "ftp.example.com"
+FTP_USER = "the_username"
+FTP_PASS = "the_password"
+
+ftp = FTP(FTP_HOST)
+ftp.login(FTP_USER, FTP_PASS)
+
+print("Connected to FTP.")
+
+ftp.cwd("/upload_folder")
+
+ftp.storbinary("STOR dataframe.csv", csv_buffer)
+
+print("DataFrame uploaded as 'dataframe.csv'")
+
+ftp.quit()
