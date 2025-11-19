@@ -8,7 +8,7 @@ Created on Fri Oct 30 21:24:52 2020
 import matplotlib.pyplot as plt
 import pandas as pd
 
-xlsx = pd.ExcelFile(r"D:\1.P3P4\Trendstatistiken.xlsx")
+xlsx = pd.ExcelFile(r"D:\1.P1P2\Trendstatistiken.xlsx")
 df = xlsx.parse('Trend_Stats')
 
 
@@ -63,5 +63,6 @@ plt.plot('Date', 'Target', data=df_1, marker='o', markersize=10, color='#59b300'
          
 plt.ylabel('Count_Cases', color = 'Blue')
 plt.title('Daily_Trend', color = 'Blue', fontsize = '22')
+
 
 
