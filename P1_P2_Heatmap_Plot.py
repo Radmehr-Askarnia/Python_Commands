@@ -33,3 +33,4 @@ ax = sns.heatmap(data, linewidths=0, annot=True, vmin=0, vmax=20,
 plt.xlabel('Date')
 plt.ylabel('Region')
 
+
